@@ -1,0 +1,347 @@
+//Error Printing Functions
+error = function(error, message)
+    exit("<color=red>Runtime Error: " + error + " Error: " + message)
+end function
+
+hasItem = function(Values, item)
+    if Values.indexOf(item) == null then return false
+    return true
+end function
+
+isValidType = function(func, item, variableName, valids)
+    if not typeof(valids) == "list" then valids = [valids]
+    if not hasItem(valids, typeof(item)) then error("Type", "the " + func + "() function only accepts type(s) of '" + valids.join("', '") + "' for " + variableName +  " (" + typeof(item) + ")")
+end function
+
+
+
+
+
+//List
+max = function(Values)
+    isValidType("max", Values, "Values", ["list","map"])
+    if typeof(Values) == "list" then return Values[0:].sort[-1]
+    Items = Values.values
+    return Values.indexes[Items.indexOf(max(Items))]
+end function
+maximum=@max
+
+
+
+//List
+min = function(Values)
+    isValidType("min", Values, "Values", ["list","map"])
+    if typeof(Values) == "list" then return Values[0:].sort[0]
+    Items = Values.values
+    return Values.indexes[Items.indexOf(min(Items))]
+end function
+minimum=@min
+
+
+
+//List
+removeItem = function(Values, item)
+    isValidType("removeItem", Values, "Values", "list")
+    if Values.indexOf(item) == null then return false
+    Values.remove(Values.indexOf(item))
+    return true
+end function
+remi = @removeItem
+remItem = @removeItem
+
+
+
+//List
+removeAllItem = function(Values, item)
+    isValidType("removeAllItem", Values, "Values", "list")
+    if Values.indexOf(item) == null then return false
+
+    while true
+        remi(Values, item)
+    end while
+    return true
+end function
+remItems = @removeAllItem
+remAllItem = @removeAllItem
+
+
+
+//List | Map
+count = function(Values, item)
+    isValidType("count", Values, "Values", ["list","map"])
+
+    if typeof(Values) == "map" then return str(Values[item]).len
+
+    x = 0
+    for i in Values
+        if i == item then x = x + 1
+    end for
+    return x
+end function
+
+
+
+//List
+removeDuplicates = function(Values)
+    isValidType("removeDuplicates", Values, "Values", "list")
+    Items = []
+    for item in Values
+        if Items.indexOf(item) == null then Items.push(item)
+    end for
+    
+    for item in Items
+        if count(Values, item) > 1 then remi(Values, item)
+    end for
+end function
+remDups = @removeDuplicates
+remDuplicates = @removeDuplicates
+
+
+
+//List
+mean = function(Values)
+    isValidType("average", Values, "Values", "list")
+    return sum(Values) / Values.len
+end function
+average=@mean
+
+
+
+//List
+median = function(Values)
+    isValidType("median", Values, "Values", "list")
+    if Values.len % 2 == 0 then
+        x = Values.len / 2
+        return sum(Values[0:].sort[x:x+1]) / 2
+    end if
+    return Values[0:].sort[floor(round(Values.len / 2))] 
+end function
+middle=@median
+
+
+
+//List
+mode = function(Values)
+    isValidType("mode", Values, "Values", "list")
+    Items = Values[0:]
+    remDups(Items)
+
+    Counts = []
+    for item in Items
+        Counts.push(count(Items, item))
+    end for
+
+    return Items[Counts.indexOf(max(Counts))]
+end function
+most=@mean
+
+
+
+//Number | String(number)
+factors = function(number)
+    isValidType("factors", number, "number", ["number","string"])
+    if typeof(number) == "string" then number = number.to_int
+    if typeof(number) == "string" then error("Conversion", "Could not convert 'string' to 'number' (" + number + ")")
+
+    Temp = []
+    for i in range(1, floor(sqrt(number)) + 1)
+        if number % i == 0 then Temp.push([i, floor(number / i)])
+    end for
+
+    Factors = []
+    for pair in Temp
+        for item in pair
+            Factors.push(item)
+        end for
+    end for
+
+    remDups(Factors)
+    return Factors.sort
+end function
+
+
+
+//List
+greatestCommonFactor = function(Values)
+    isValidType("greatestCommonFactor", Values, "Values", "list")
+
+    Items = Values[0:]
+    for i in range(Items.len - 1)
+        Items[i] = factors(Items[i])
+    end for
+
+    FactorAmounts = []
+    for item in Items
+        FactorAmounts.push(item.len)
+    end for
+
+    smallest = Items[FactorAmounts.indexOf(min(FactorAmounts))]
+    Items.remove(Items.indexOf(smallest))
+
+
+    Data = []
+    for small in smallest
+        Temp = []
+        for item in Items
+            if not item.indexOf(small) == null then Temp.push(true)
+        end for
+        if count(Temp, true) == Items.len then Data.push(small)
+    end for
+
+
+    return max(Data)
+end function
+GCF = @greatestCommonFactor
+
+
+
+//Number | String(number)
+decimalToPercent = function(number)
+    isValidType("decimalToPercent", number, "number", ["number","string"])
+    if typeof(number) == "string" then number = number.to_int
+    if typeof(number) == "string" then error("Conversion", "Could not convert 'string' to 'number' (" + number + ")")
+    return number * 100
+end function
+DTP = @decimalToPercent
+
+
+
+//Number | String(number)
+percentToDecimal = function(number)
+    isValidType("percentToDecimal", number, "number", ["number","string"])
+    if typeof(number) == "string" then number = number.to_int
+    if typeof(number) == "string" then error("Conversion", "Could not convert 'string' to 'number' (" + number + ")")
+    return number / 100
+end function
+PTD = @percentToDecimal
+
+
+
+//Number | String(number)
+percentToMultiplier = function(number)
+    isValidType("topercentToMultiplierPercent", number, "number", ["number","string"])
+    if typeof(number) == "string" then number = number.to_int
+    if typeof(number) == "string" then error("Conversion", "Could not convert 'string' to 'number' (" + number + ")")
+    return toDecimal(number) + 1
+end function
+PTM = @percentToMultiplier
+
+
+
+//Number | String(number)
+multiplierToPercent = function(number)
+    isValidType("multiplierToPercent", number, "number", ["number","string"])
+    if typeof(number) == "string" then number = number.to_int
+    if typeof(number) == "string" then error("Conversion", "Could not convert 'string' to 'number' (" + number + ")")
+    return toPercent(number - 1)
+end function
+MTP = @multiplierToPercent
+
+
+
+//Number | String(number)
+decimalToFraction = function(number)
+    isValidType("decimalToFraction", number, "number", ["number","string"])
+    if typeof(number) == "string" then number = number.to_int
+    if typeof(number) == "string" then error("Conversion", "Could not convert 'string' to 'number' (" + number + ")")
+    
+    number = str(number).split("\.")
+    if number.len == 0 then return number[0]
+
+    denominator = 10 ^ number[1].len
+    numerator = number[1].to_int + (number[0].to_int * denominator)
+
+    factor = GCF([numerator, denominator])
+    numerator = floor(numerator / factor)
+    denominator = floor(denominator / factor)
+
+    return numerator + "/" + denominator
+end function
+DTF = @decimalToFraction
+
+
+
+//Number | String(number)
+baseConvert = function(number, base)
+    isValidType("baseConvert", number, "number", ["number","string"])
+    isValidType("baseConvert", base, "base", ["number","string"])
+    if typeof(number) == "string" then number = number.to_int
+    if typeof(number) == "string" then error("Conversion", "Could not convert 'string' to 'number' (" + number + ")")
+    if typeof(number) == "string" then base = base.to_int
+    if typeof(number) == "string" then error("Conversion", "Could not convert 'string' to 'number' (" + base + ")")
+
+    digits = []
+    while number > 0
+        digits.push(floor(number % base))
+        number = floor(number / base)
+    end while
+
+    digits.reverse
+    return digits
+end function
+
+
+
+//Number | String(number)
+hex = function(number)
+    isValidType("hex", number, "number", ["number","string"])
+    if typeof(number) == "string" then number = number.to_int
+    if typeof(number) == "string" then error("Conversion", "Could not convert 'string' to 'number' (" + number + ")")
+
+    dectohex = function(decimal)
+        if decimal < 10 then return decimal else return {10:"A",11:"B",12:"C",13:"D",14:"E",15:"F"}[decimal]
+    end function
+
+    hexnumber = baseConvert(number, 16)
+    for i in range(hexnumber.len - 1)
+        hexnumber[i] = dectohex(hexnumber[i])
+    end for
+
+    return hexnumber.join("")
+end function
+
+
+
+//Number | String(number)
+bin = function(number)
+    isValidType("bin", number, "number", ["number","string"])
+    if typeof(number) == "string" then number = number.to_int
+    if typeof(number) == "string" then error("Conversion", "Could not convert 'string' to 'number' (" + number + ")")
+
+    binnumber = baseConvert(number, 2)
+    return binnumber.join("")
+end function
+
+
+
+//Number | String(number)
+oct = function(number)
+    isValidType("oct", number, "number", ["number","string"])
+    if typeof(number) == "string" then number = number.to_int
+    if typeof(number) == "string" then error("Conversion", "Could not convert 'string' to 'number' (" + number + ")")
+
+    octnumber = baseConvert(number, 8)
+    return octnumber.join("")
+end function
+
+
+
+//String
+capitalize = function(string)
+    isValidType("capitalize", string, "string", "string")
+    return string[0].upper + string[1:]
+end function
+cap = @capitalize
+
+
+
+//Function + List
+
+//This function will take a function as the first parameter and then apply that function to all items in the list.
+//Note that to pass a function, you put @ before it... so applyFunction(@sqrt, list).
+applyFunction = function(func, list)
+    isValidType("applyFunction", list, "list", "list")
+    for i in range(list.len - 1)
+		list[i] = func(list[i])
+	end for
+end function
