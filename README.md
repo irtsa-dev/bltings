@@ -18,11 +18,11 @@ Adds more functions into [greyscript](https://codedocs.ghtools.xyz/) from [Grey 
 ## Usage
 To import:
 ```lua
-include_code("/bin/bltings")
+import_code("/bin/bltings")
 ```
 Or if you didnt save as recommended:
 ```lua
-include_code("<path-to-file>")
+import_code("<path-to-file>")
 ```
 <br />
 
