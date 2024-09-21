@@ -122,7 +122,8 @@ PTM(number)
 
 
 
-multiplierToPercent
+multiplierToPercent(number)
+MTP(number)
 // Expects type(s) 'number', 'string(number)' for number
 // Will return the percentage form of the given number (assuming multiplier).
 
