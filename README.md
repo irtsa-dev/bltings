@@ -156,7 +156,7 @@ oct(number)
 
 capitalize(string)
 // Expects type(s) 'string' for string
-// Will simply make the first item in the provided string uppercase.
+// Will return given string with first item in the provided string uppercase.
 
 
 applyFunction(func, list)
