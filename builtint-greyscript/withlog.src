@@ -261,7 +261,7 @@ DTF = @decimalToFraction
 
 
 
-//Number | String(number)
+//Number | String(number) + Number | String(number)
 baseConvert = function(number, base)
     isValidType("baseConvert", number, "number", ["number","string"])
     isValidType("baseConvert", base, "base", ["number","string"])
@@ -344,4 +344,56 @@ applyFunction = function(func, list)
     for i in range(list.len - 1)
 		list[i] = func(list[i])
 	end for
+end function
+
+
+
+//String + Number | String(number) + String
+rfill = function(string, amount, filler)
+    isValidType("rfill", string, "string", "string")
+    isValidType("rfill", amount, "amount", "number")
+    isValidType("rfill", filler, "filler", "string")
+    amount = max([0, amount - string.len])
+    if amount > 0 then string = string + filler * amount
+    return string
+end function
+
+
+
+//String + Number | String(number) + String
+lfill = function(string, amount, filler = "0")
+    isValidType("lfill", string, "string", "string")
+    isValidType("lfill", amount, "amount", "number")
+    isValidType("lfill", filler, "filler", "string")
+    amount = max([0, amount - string.len])
+    if amount > 0 then string = filler * amount + string
+    return string
+end function
+
+
+
+//Number
+isPrime = function(number)
+    isValidType("isPrime", number, "number", "number")
+    if number == 1 then return false
+    return factors(number).len == 2
+end function
+
+
+
+//Number
+factorsPrime = function(number)
+    isValidType("factorsPrime", number, "number", "number")
+
+    Factors = [1]
+    while not isPrime(number)
+        number = floor(number / Factors[-1])
+        for i in factors(number)
+            if isPrime(i) then
+                Factors.push(i)
+                break
+            end if
+        end for
+    end while
+    return Factors[1:]
 end function
