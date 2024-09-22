@@ -1,4 +1,4 @@
-//List
+//List | Map
 max = function(Values)
     if typeof(Values) == "list" then return Values[0:].sort[-1]
     Items = Values.values
@@ -8,7 +8,7 @@ maximum=@max
 
 
 
-//List
+//List | Map
 min = function(Values)
     if typeof(Values) == "list" then return Values[0:].sort[0]
     Items = Values.values
@@ -18,7 +18,7 @@ minimum=@min
 
 
 
-//List
+//List + any
 removeItem = function(Values, item)
     if Values.indexOf(item) == null then return false
     Values.remove(Values.indexOf(item))
@@ -29,7 +29,7 @@ remItem = @removeItem
 
 
 
-//List
+//List + any
 removeAllItem = function(Values, item)
     if Values.indexOf(item) == null then return false
 
@@ -212,6 +212,9 @@ DTF = @decimalToFraction
 
 //Number | String(number) + Number | String(number)
 baseConvert = function(number, base)
+    if typeof(number) == "string" then number = number.to_int
+    if typeof(base) == "string" then base = base.to_int
+
     digits = []
     while number > 0
         digits.push(floor(number % base))
@@ -226,6 +229,7 @@ end function
 
 //Number | String(number)
 hex = function(number)
+    if typeof(number) == "string" then number = number.to_int
     dectohex = function(decimal)
         if decimal < 10 then return decimal else return {10:"A",11:"B",12:"C",13:"D",14:"E",15:"F"}[decimal]
     end function
@@ -242,6 +246,7 @@ end function
 
 //Number | String(number)
 bin = function(number)
+    if typeof(number) == "string" then number = number.to_int
     binnumber = baseConvert(number, 2)
     return binnumber.join("")
 end function
@@ -250,6 +255,7 @@ end function
 
 //Number | String(number)
 oct = function(number)
+    if typeof(number) == "string" then number = number.to_int
     octnumber = baseConvert(number, 8)
     return octnumber.join("")
 end function
@@ -267,9 +273,9 @@ end function
 
 //This function will take a function as the first parameter and then apply that function to all items in the list.
 //Note that to pass a function, you put @ before it... so applyFunction(@sqrt, list).
-applyFunction = function(func, list)
-    for i in range(list.len - 1)
-		list[i] = func(list[i])
+applyFunction = function(func, Values)
+    for i in range(Values.len - 1)
+		Values[i] = func(Values[i])
 	end for
 end function
 
@@ -277,6 +283,7 @@ end function
 
 //String + Number | String(number) + String
 rfill = function(string, amount, filler)
+    if typeof(amount) == "string" then amount = amount.to_int
     amount = max([0, amount - string.len])
     if amount > 0 then string = string + (filler * amount)
     return string
@@ -286,6 +293,7 @@ end function
 
 //String + Number | String(number) + String
 lfill = function(string, amount, filler = "0")
+    if typeof(amount) == "string" then amount = amount.to_int
     amount = max([0, amount - string.len])
     if amount > 0 then string = (filler * amount) + string
     return string
@@ -295,6 +303,7 @@ end function
 
 //Number
 isPrime = function(number)
+    if typeof(number) == "string" then number = number.to_int
     if number == 1 then return false
     return factors(number).len == 2
 end function
@@ -303,6 +312,7 @@ end function
 
 //Number
 factorsPrime = function(number)
+    if typeof(number) == "string" then number = number.to_int
     Factors = [1]
     while not isPrime(number)
         number = floor(number / Factors[-1])
