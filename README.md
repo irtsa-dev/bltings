@@ -44,7 +44,7 @@ minimum(Values)
 
 removeItem(Values, item)
 remi(Values, item)
-remItemValues, item)
+remItem(Values, item)
 // Expects type(s) 'list' for Values | any for item
 // Will remove the first instance of the specified item from the provided list.
 // Will return true if the item was removed, false if otherwise.
