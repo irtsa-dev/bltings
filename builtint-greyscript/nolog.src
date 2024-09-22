@@ -210,7 +210,7 @@ DTF = @decimalToFraction
 
 
 
-//Number | String(number)
+//Number | String(number) + Number | String(number)
 baseConvert = function(number, base)
     digits = []
     while number > 0
@@ -271,4 +271,47 @@ applyFunction = function(func, list)
     for i in range(list.len - 1)
 		list[i] = func(list[i])
 	end for
+end function
+
+
+
+//String + Number | String(number) + String
+rfill = function(string, amount, filler)
+    amount = max([0, amount - string.len])
+    if amount > 0 then string = string + (filler * amount)
+    return string
+end function
+
+
+
+//String + Number | String(number) + String
+lfill = function(string, amount, filler = "0")
+    amount = max([0, amount - string.len])
+    if amount > 0 then string = (filler * amount) + string
+    return string
+end function
+
+
+
+//Number
+isPrime = function(number)
+    if number == 1 then return false
+    return factors(number).len == 2
+end function
+
+
+
+//Number
+factorsPrime = function(number)
+    Factors = [1]
+    while not isPrime(number)
+        number = floor(number / Factors[-1])
+        for i in factors(number)
+            if isPrime(i) then
+                Factors.push(i)
+                break
+            end if
+        end for
+    end while
+    return Factors[1:]
 end function
