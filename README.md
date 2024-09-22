@@ -163,6 +163,26 @@ applyFunction(func, list)
 // Expects type(s) 'function' for func | 'list' for list
 // Will apply the given function to all items in the given list (note one must pass the function with @ infront (applyFunction(@sqrt, lust)).
 // This edits the provided list, so reassignment is not needed.
+
+
+rfill(string, amount, filler)
+// Expects type(s) 'string' for string | 'number' for amount | 'string' for filler
+// Will use the filler variable and will pad on the right the string with said filler until the length of said string is equal to the amount variable.
+
+
+lfill(string, amount, filler)
+// Expects type(s) 'string' for string | 'number' for amount | 'string' for filler
+// Will use the filler variable and will pad on the left the string with said filler until the length of said string is equal to the amount variable.
+
+
+isPrime(number)
+// Expects type(s) 'number' for number
+// Will return true or false depending on if the number is a prime number or not.
+
+
+factorsPrime(number)
+// Expects type(s) 'number' for number
+// Will return a list of prime factors of the given number.
 ```
 ​
 <br />
