@@ -315,3 +315,17 @@ factorsPrime = function(number)
     end while
     return Factors[1:]
 end function
+
+
+
+//String + List
+format = function(string, Values)
+    x = 0
+    while not string.indexOf("{}") == null
+        i = string.indexOf("{}")
+        string = string[0:i] + Variables[x] + string[i + 2:]
+        x = x + 1
+    end while
+    return string
+end function
+f = @format
