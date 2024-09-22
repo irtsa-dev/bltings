@@ -183,6 +183,12 @@ isPrime(number)
 factorsPrime(number)
 // Expects type(s) 'number' for number
 // Will return a list of prime factors of the given number.
+
+
+format(string, Values)
+f(string, Values)
+// Expects type(s) 'string' for string | 'list' for Values
+// Takes a string with '{}' and returns the same string with each instance with a the correspond item in Values, expects equal number of items in Values list and '{}' in the given string.
 ```
 ​
 <br />
