@@ -1,4 +1,4 @@
-# builtin-greyscript
+# builtin-greyscript (bltings)
 Adds more functions into [greyscript](https://codedocs.ghtools.xyz/) from [Grey Hack](https://store.steampowered.com/app/605230/Grey_Hack/) to utilize in scripts.
 <br />
 <br />
