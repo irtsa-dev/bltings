@@ -178,6 +178,7 @@ isPrime(number)
 
 
 factorsPrime(number)
+factorsp(number)
 // Expects type(s) 'number', 'string(number)' for number
 // Will return a list of prime factors of the given number.
 
