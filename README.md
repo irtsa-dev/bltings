@@ -47,8 +47,7 @@ remi(Values, item)
 remItem(Values, item)
 // Expects type(s) 'list' for Values | any for item
 // Will remove the first instance of the specified item from the provided list.
-// Will return true if the item was removed, false if otherwise.
-// This edits the provided list, so reassignment is not needed.
+// Will return a list with the first instance of said item removed.
 
 
 removeAllItems(Values, item)
@@ -56,8 +55,7 @@ remItems(Values, item)
 remAllItem(Values, item)
 // Expects type(s) 'list' for Values | any for item
 // Will remove all instances of the specified item from the provided list.
-// Will return true if the item was removed, false if otherwise.
-// This edits the provided list, so reassignment is not needed.
+// Will return a list with all instances said item removed.
 
 
 count(Values, item)
@@ -71,7 +69,6 @@ remDups(Values)
 remDuplicates(Values)
 // Expects type(s) 'list' for Values
 // Will return a list with all duplicate values removed.
-// This edits the provided list, so reassignment is not needed.
 
 
 mean(Values)
