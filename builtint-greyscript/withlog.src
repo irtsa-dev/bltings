@@ -56,8 +56,8 @@ removeAllItem = function(Values, item)
     isValidType("removeAllItem", Values, "Values", "list")
     if Values.indexOf(item) == null then return false
 
-    while true
-        remi(Values, item)
+    while remi(Values, item)
+        continue
     end while
     return true
 end function
