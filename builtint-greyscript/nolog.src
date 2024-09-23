@@ -33,8 +33,8 @@ remItem = @removeItem
 removeAllItem = function(Values, item)
     if Values.indexOf(item) == null then return false
 
-    while true
-        if not remi(Values, item) then break
+    while remi(Values, item)
+        continue
     end while
     return true
 end function
