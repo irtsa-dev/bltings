@@ -21,8 +21,7 @@ minimum=@min
 //List + any
 removeItem = function(Values, item)
     if Values.indexOf(item) == null then return false
-    Values.remove(Values.indexOf(item))
-    return true
+    return Values[:Values.indexOf(item) - 1] + Values[Values.indexOf(item):]
 end function
 remi = @removeItem
 remItem = @removeItem
@@ -33,10 +32,11 @@ remItem = @removeItem
 removeAllItem = function(Values, item)
     if Values.indexOf(item) == null then return false
 
-    while remi(Values, item)
-        continue
+    NValues = Values[0:]
+    while NValues.indexOf(item) != null
+        NValues.remove(NValues.indexOf(item))
     end while
-    return true
+    return NValues
 end function
 remItems = @removeAllItem
 remAllItem = @removeAllItem
@@ -46,12 +46,7 @@ remAllItem = @removeAllItem
 //List | Map
 count = function(Values, item)
     if typeof(Values) == "map" then return str(Values[item]).len
-
-    x = 0
-    for i in Values
-        if i == item then x = x + 1
-    end for
-    return x
+    return Values.len - removeAllItem(Values, item).len
 end function
 
 
@@ -62,10 +57,7 @@ removeDuplicates = function(Values)
     for item in Values
         if Items.indexOf(item) == null then Items.push(item)
     end for
-    
-    for item in Items
-        if count(Values, item) > 1 then remi(Values, item)
-    end for
+    return Items
 end function
 remDups = @removeDuplicates
 remDuplicates = @removeDuplicates
@@ -325,6 +317,7 @@ factorsPrime = function(number)
     end while
     return Factors[1:]
 end function
+factorsp = @factorsPrime
 
 
 
