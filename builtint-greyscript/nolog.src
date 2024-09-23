@@ -20,7 +20,7 @@ minimum=@min
 
 //List + any
 removeItem = function(Values, item)
-    if Values.indexOf(item) == null then return false
+    if Values.indexOf(item) == null then return Values
     return Values[:Values.indexOf(item) - 1] + Values[Values.indexOf(item):]
 end function
 remi = @removeItem
@@ -30,7 +30,7 @@ remItem = @removeItem
 
 //List + any
 removeAllItem = function(Values, item)
-    if Values.indexOf(item) == null then return false
+    if Values.indexOf(item) == null then return Values
 
     NValues = Values[0:]
     while NValues.indexOf(item) != null
