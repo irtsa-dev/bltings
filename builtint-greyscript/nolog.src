@@ -331,3 +331,16 @@ format = function(string, Values)
     return string
 end function
 f = @format
+
+
+
+//String + Number | String(number)
+stringGroup = function(string, groupsize)
+    if typeof(groupsize) == "string" then groupsize = groupsize.to_int
+    
+    strings = []
+    for i in range(0, string.len, groupsize)
+        strings.push(string[i : min([i + groupsize, string.len])])
+    end for
+    return strings
+end function
