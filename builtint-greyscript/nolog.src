@@ -274,11 +274,9 @@ end function
 
 
 //String + Number | String(number) + String
-rfill = function(string, amount, filler)
+rfill = function(string, amount, filler = "0")
     if typeof(amount) == "string" then amount = amount.to_int
-    amount = max([0, amount - string.len])
-    if amount > 0 then string = string + (filler * amount)
-    return string
+    return string + filler * max([0, amount - string.len])
 end function
 
 
@@ -286,9 +284,7 @@ end function
 //String + Number | String(number) + String
 lfill = function(string, amount, filler = "0")
     if typeof(amount) == "string" then amount = amount.to_int
-    amount = max([0, amount - string.len])
-    if amount > 0 then string = (filler * amount) + string
-    return string
+    return filler * max([0, amount - string.len]) + string
 end function
 
 
