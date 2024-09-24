@@ -187,6 +187,11 @@ format(string, Values)
 f(string, Values)
 // Expects type(s) 'string' for string | 'list' for Values
 // Takes a string with '{}' and returns the same string with each instance with a the correspond item in Values, expects equal number of items in Values list and '{}' in the given string.
+
+
+stringGroup(string, groupsize)
+// Expects type(s) 'string' for string | 'number' for groupsize
+// Will return a list of the given string "chopped" up into groups with lengths equal to groupsize (the last item may not be said length if the length of the string is not a multiple of the groupsize).
 ```
 ​
 <br />
