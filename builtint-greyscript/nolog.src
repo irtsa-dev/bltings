@@ -170,7 +170,7 @@ PTD = @percentToDecimal
 
 //Number | String(number)
 percentToMultiplier = function(number)
-    return toDecimal(number) + 1
+    return PTD(number) + 1
 end function
 PTM = @percentToMultiplier
 
@@ -178,7 +178,7 @@ PTM = @percentToMultiplier
 
 //Number | String(number)
 multiplierToPercent = function(number)
-    return toPercent(number - 1)
+    return DTP(number - 1)
 end function
 MTP = @multiplierToPercent
 
