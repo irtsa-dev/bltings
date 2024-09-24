@@ -114,8 +114,7 @@ factors = function(number)
         end for
     end for
 
-    remDups(Factors)
-    return Factors.sort
+    return remDups(Factors).sort
 end function
 
 
