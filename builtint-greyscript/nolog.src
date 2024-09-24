@@ -10,7 +10,8 @@ maximum=@max
 
 //List | Map
 min = function(Values)
-    if typeof(Values) == "list" then return Values[0:].sort[0]
+    if typeof(Values) == "list" then return Values
+    if Values.indexOf(item) == 0 then return Values[1:]
     Items = Values.values
     return Values.indexes[Items.indexOf(min(Items))]
 end function
