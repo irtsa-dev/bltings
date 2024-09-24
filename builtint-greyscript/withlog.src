@@ -420,3 +420,20 @@ format = function(string, Values)
     return string
 end function
 f = @format
+
+
+
+//String + Number | String(number)
+stringGroup = function(string, groupsize)
+    isValidType("stringGroup", string, "string", "string")
+    isValidType("stringGroup", groupsize, "groupsize", ["number","string"])
+
+    if typeof(groupsize) == "string" then groupsize = groupsize.to_int
+    if typeof(number) == "string" then error("Conversion", "Could not convert 'string' to 'number' (" + number + ")")
+
+    strings = []
+    for i in range(0, string.len, groupsize)
+        strings.push(string[i : min([i + groupsize, string.len])])
+    end for
+    return strings
+end function
