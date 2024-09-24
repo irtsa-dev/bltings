@@ -213,7 +213,7 @@ percentToMultiplier = function(number)
     isValidType("topercentToMultiplierPercent", number, "number", ["number","string"])
     if typeof(number) == "string" then number = number.to_int
     if typeof(number) == "string" then error("Conversion", "Could not convert 'string' to 'number' (" + number + ")")
-    return toDecimal(number) + 1
+    return PTD(number) + 1
 end function
 PTM = @percentToMultiplier
 
@@ -224,7 +224,7 @@ multiplierToPercent = function(number)
     isValidType("multiplierToPercent", number, "number", ["number","string"])
     if typeof(number) == "string" then number = number.to_int
     if typeof(number) == "string" then error("Conversion", "Could not convert 'string' to 'number' (" + number + ")")
-    return toPercent(number - 1)
+    return DTP(number - 1)
 end function
 MTP = @multiplierToPercent
 
