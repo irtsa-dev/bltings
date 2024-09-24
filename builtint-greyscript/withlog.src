@@ -3,14 +3,9 @@ error = function(error, message)
     exit("<color=red>Runtime Error: " + error + " Error: " + message)
 end function
 
-hasItem = function(Values, item)
-    if Values.indexOf(item) == null then return false
-    return true
-end function
-
 isValidType = function(func, item, variableName, valids)
     if not typeof(valids) == "list" then valids = [valids]
-    if not hasItem(valids, typeof(item)) then error("Type", "the " + func + "() function only accepts type(s) of '" + valids.join("', '") + "' for " + variableName +  " (" + typeof(item) + ")")
+    if not hasItem(valids, typeof(item) then error("Type", "the " + func + "() function only accepts type(s) of '" + valids.join("', '") + "' for " + variableName +  " (" + typeof(item) + ")")
 end function
 
 
