@@ -11,7 +11,6 @@ maximum=@max
 //List | Map
 min = function(Values)
     if typeof(Values) == "list" then return Values
-    if Values.indexOf(item) == 0 then return Values[1:]
     Items = Values.values
     return Values.indexes[Items.indexOf(min(Items))]
 end function
@@ -22,6 +21,7 @@ minimum=@min
 //List + any
 removeItem = function(Values, item)
     if Values.indexOf(item) == null then return Values
+    if Values.indexOf(item) == 0 then return Values[1:]
     return Values[:Values.indexOf(item) - 1] + Values[Values.indexOf(item):]
 end function
 remi = @removeItem
