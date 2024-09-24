@@ -97,7 +97,7 @@ mode = function(Values)
 
     return Items[Counts.indexOf(max(Counts))]
 end function
-most=@mean
+most=@mode
 
 
 
