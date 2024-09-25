@@ -138,6 +138,10 @@ factors = function(value)
     return Factors.set.sort
 end function
 
+number.factors = function
+    return factors(self)
+end function
+
 
 
 //FactorsPrime Function
@@ -155,12 +159,20 @@ factorsPrime = function(number)
     return Factors[1:]
 end function
 
+number.factorsPrime = function
+    return factorsPrime(self)
+end function
+
 
 
 //IsPrime Function
 isPrime = function(number)
     if number == 1 then return false
     return factors(number).len == 2
+end function
+
+number.isPrime = function
+    return isPrime(function)
 end function
 
 
@@ -202,11 +214,19 @@ decimalpercent = function(value)
     return value * 100
 end function
 
+number.decimalpercent = function
+    return self * 100
+end function
+
 
 
 //Percent to Decimal Function
 percentdecimal = function(value)
     return value / 100
+end function
+
+number.percentdecimal = function
+    return self / 100
 end function
 
 
@@ -216,11 +236,19 @@ percentmultiplier = function(value)
     return percentdecimal(value) + 1
 end function
 
+number.percentmultiplier = function
+    return percentdecimal(self) + 1
+end function
+
 
 
 //Multiplier to Percent Function
 multiplierpercent = function(value)
     return decimalpercent(value - 1)
+end function
+
+number.multiplierpercent = function
+    return decimalpercent(self - 1)
 end function
 
 
@@ -238,6 +266,10 @@ decimalfraction = function(value)
     denominator = floor(denominator / factor)
 
     return numerator + "/" + denominator
+end function
+
+number.decimalfraction = function
+    return decimalfraction(self)
 end function
 
 
