@@ -94,6 +94,14 @@ mode()
 applyFunction(func)
 // Will apply the given function 'func' onto all items in the given list.
 // Example [1.32, 124.234, 423.3, 32.24545].applyFunction(@floor)   [returns [1, 124, 423, 32]]
+
+all()
+// Will return true if all values in said list are true.
+// Example [true, true, false].all   [returns 0(false)]
+
+any()
+// Will return true if at least one values in said list are true.
+// Example [true, true, false].any   [returns 1(true)]
 ```
 <br />
 
@@ -213,6 +221,38 @@ bin(value)
 oct(value)
 // Will return the 'value' variable assuming base 10 as octal, will be a string.
 // Example oct(100)   [returns "144"]
+
+all(Values)
+// Will return true if all values in given list 'Values' are true.
+// Example all([true, true, false])   [returns 0(false)]
+
+any(Values)
+// Will return true if at least one values in given list 'Values' are true.
+// Example any([true, true, false])   [returns 1(true)]
+
+foldercount(folder)
+// Will return how many folders are in the given folder 'folder', will return null if folder is not of type 'file'(folder).
+// Example folder=get_shell.host_computer.File("/home"); foldercount(folder)   [returns 3]
+
+filecount(folder)
+// Will return how many files are in the given folder 'folder', will return null if folder is not of type 'file'(folder).
+// Example folder=get_shell.host_computer.File("/etc"); filecount(folder)   [returns 3]
+
+open_ports(router)
+// Will return a list of open used ports on the given router 'router'.
+// Example open_ports(get_router)   [returns [port, port, port, port]]
+
+closed_ports(router)
+// Will return a list of closed used ports on the given router 'router'.
+// Example closed_ports(get_router)   [returns [port, port]]
+
+filehash(file)
+// Will return the md5 hash of the file contents of the given file 'file'.
+// Example filehash(get_shell.host_computer.File("/etc/passwd"))   [returns "e2d0144aa03278f03fb1d50c1c46b7ca"]
+
+folderhash(folder)
+// Will return the md5 hash of all child folder and file paths concatenated of the given folder 'folder'.
+// Example folderhash(get_shell.host_computer.File("/home"))   [returns "9c746492c2295b799aa637d641b3998a"]
 ```
 ​
 <br />
