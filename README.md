@@ -27,10 +27,11 @@ import_code("<path-to-file>")
 <br />
 
 Then, later on you may utilize the functions:
-
+<br />
+<br />
 
 New Map Functions
-```
+```js
 max()
 // Will return the key that has the longest value.
 // Example: {"a" : 123, "b": 1}.max   [returns "a"]
@@ -42,7 +43,7 @@ min()
 <br />
 
 New List Functions
-```
+```js
 max()
 // Will return the largest value in the list.
 // Example: [1, 3, 8, 5, 1, 5, 0].max   [returns 5]
@@ -97,7 +98,7 @@ applyFunction(func)
 <br />
 
 New String Functions
-```
+```js
 capitalize()
 // Will capitalize the first letter of said string.
 // Exaple "hello!"   [returns "Hello!"]
@@ -124,7 +125,7 @@ group(groupsize)
 <br />
 
 New General Functions
-```
+```js
 factors(value)
 // Will return a list of the factors of the given 'value'.
 // Example: factors(20)   [returns [1, 2, 4, 5, 10, 20]]
