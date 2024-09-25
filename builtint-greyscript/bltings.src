@@ -190,7 +190,7 @@ greatestCommonFactor = function(Values)
     end for
 
 
-    return max(Data)
+    return Data.max
 end function
 
 
