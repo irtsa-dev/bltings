@@ -1,9 +1,9 @@
 //Max Function
-list.max = function(self)
+list.max = function
     return self[0:].sort[-1]
 end function
 
-map.max = function(self)
+map.max = function
     Items = self.values
     return self.indexes[Items.indexOf(Items.max)]
 end function
@@ -11,18 +11,18 @@ end function
 
 
 //MaxIndex Function
-list.maxIndex = function(self)
+list.maxIndex = function
     return self.indexOf(self.max)
 end function
 
 
 
 //Min Function
-list.min = function(self)
+list.min = function
     return self[0:].sort[0]
 end function
 
-map.min = function(self)
+map.min = function
     Items = self.values
     return self.indexes[Items.indexOf(Items.max)]
 end function
@@ -30,14 +30,14 @@ end function
 
 
 //MinIndex Function
-list.minIndex = function(self)
+list.minIndex = function
     return self.indexOf(self.min)
 end function
 
 
 
 //Delete Function
-list.delete = function(self, item)
+list.delete = function(item)
     if self.indexOf(item) != null then self.remove(self.indexOf(item))
     return self
 end function
@@ -45,7 +45,7 @@ end function
 
 
 //DeleteAll Function
-list.deleteAll = function(self, item)
+list.deleteAll = function(item)
     if self.indexOf(item) == null then return Values
 
     while self.indexOf(item) != null
@@ -58,7 +58,7 @@ end function
 
 
 //Set Function
-list.set = function(self)
+list.set = function
     Values = []
     for i in self
         if Values.indexOf(i) == null then Values.push(i)
@@ -69,25 +69,25 @@ end function
 
 
 //Count Function
-list.count = function(self, item)
+list.count = function(item)
     return self.len - self[0:].deleteAll(item).len
 end function
 
-map.count = function(self, item)
+map.count = function(item)
     return str(self[item]).len
 end function
 
 
 
 //Mean Function
-list.mean = function(self)
+list.mean = function
     return sum(self) / self.len
 end function
 
 
 
 //Median Function
-list.median = function(self)
+list.median = function
     if self.len % 2 == 0 then
         x = self.len / 2
         return sum(self[0:]).sort[x : x + 1] / 2
@@ -98,7 +98,7 @@ end function
 
 
 //Mode Function
-list.mode = function(self)
+list.mode = function
     Items = self[0:].set
 
     Counts = []
@@ -112,7 +112,7 @@ end function
 
 
 //ApplyFunction Function
-list.applyFunction = function(self, func)
+list.applyFunction = function(func)
     for i in range(self.len - 1)
         self[i] = func(self[i])
     end for
@@ -321,21 +321,21 @@ end function
 
 
 //RFill Function
-string.rfill = function(self, amount, filler = "0")
+string.rfill = function(amount, filler = "0")
     return self + filler * [0, amount - self.len].max
 end function
 
 
 
 //LFill Function
-string.lfill = function(self, amount, filler = "0")
+string.lfill = function(amount, filler = "0")
     return filler * [0, amount - self.len].max + self
 end function
 
 
 
 //Format Function
-string.format = function(self, Variables)
+string.format = function(Variables)
     x = 0
     while not self.indexOf("{}") == null
         i = self.indexOf("{}")
@@ -348,7 +348,7 @@ end function
 
 
 //Group Function
-string.group = function(self, groupsize)
+string.group = function(groupsize)
     strings = []
     for i in range(0, str(self).len, groupsize)
         strings.push(str(self)[i : [i + groupsize, str(self).len].min])
