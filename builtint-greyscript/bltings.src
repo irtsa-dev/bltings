@@ -355,3 +355,89 @@ string.group = function(groupsize)
     end for
     return strings
 end function
+
+
+//All Function
+all = function(Values)
+    for item in Values
+        if not item then return false
+    end for
+    return true
+end function
+
+list.all = function
+    return all(self)
+end function
+
+
+
+//Any Function
+any = function(Values)
+    for item in Values
+        if item then return true
+    end for
+    return false
+end function
+
+list.any = function
+    return any(self)
+end function
+
+
+
+//Folder Count Function
+foldercount = function(file)
+    if is_folder(file) then return file.get_folders.len else return null
+end function
+
+
+
+//File Count Function
+filecount = function(file)
+    if is_folder(file) then return file.get_files.len else return null
+end function
+
+
+
+//Open Ports Function
+open_ports = function(router)
+    ports = []
+    for port in router.used_ports
+        if not port.is_closed then ports.push(port)
+    end for
+    return ports
+end function
+
+
+
+//Closed Ports Function
+closed_ports = function(router)
+    ports = []
+    for port in router.used_ports
+        if port.is_closed then ports.push(port)
+    end for
+    return ports
+end function
+
+
+
+//File Hash Function
+filehash = function(file)
+    return md5(file.get_content)
+end function
+
+
+
+//Folder Hash Function
+folderhash = function(folder)
+    content = ""
+    for folder in folder.get_folders
+        content = "{}:{}".format([content,folder.path])
+    end for
+
+    for file in folder.get_files
+        content = "{}:{}".format([content,file.path])
+    end for
+
+    return md5(content)
+end function
