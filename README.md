@@ -4,8 +4,8 @@ Adds more functions into [greyscript](https://codedocs.ghtools.xyz/) from [Grey 
 <br />
 ​<br />
 ## Installation
-1. Choose whether or not you wish to have **logs** with said functions or just the functions barebones in [scripts](https://github.com/irtsa-dev/builtin-greyscript/tree/main/builtint-greyscript).
-2. Open **CodeEditor.exe** in the game **Grey Hack** and copy+paste the contents of the `.src` file you have chosen in the previous step.
+1. Copy the code from the **bltings.src** file found [here](https://github.com/irtsa-dev/builtin-greyscript/tree/main/builtint-greyscript).
+2. Open **CodeEditor.exe** in the game **Grey Hack** and paste the contents of the `bltings.src` file you copied.
 3. Build the code and save binary file naming it whatever you wish (or do `bltings`). Make sure to check **Allow import**.
 4. Save to a path you will remember (or save it to `/bin`).
 <br />
@@ -26,172 +26,156 @@ import_code("<path-to-file>")
 ```
 <br />
 
-Then, later on you may utilize:
-```js
-max(Values)
-maximum(Values)
-// Expectes type(s) 'list', 'map' for 'Values'
-// If list is passed, will return the biggest value found in list.
-// If map is passed, will print out the key associated with the biggest value found in map.
+Then, later on you may utilize the functions:
 
 
-min(Values)
-minimum(Values)
-// Expectes type(s) 'list', 'map' for 'Values'
-// If list is passed, will return the smallest value found in list.
-// If map is passed, will print out the key associated with the smallest value found in map.
+New Map Functions
+```
+max()
+// Will return the key that has the longest value.
+// Example: {"a" : 123, "b": 1}.max   [returns "a"]
 
+min()
+// Will return the key that has the shortest value.
+// Example: {"a" : 123, "b": 1}.max   [returns "b"]
+```
+<br />
 
-removeItem(Values, item)
-remi(Values, item)
-remItem(Values, item)
-// Expects type(s) 'list' for Values | any for item
-// Will remove the first instance of the specified item from the provided list.
-// Will return a list with the first instance of said item removed.
+New List Functions
+```
+max()
+// Will return the largest value in the list.
+// Example: [1, 3, 8, 5, 1, 5, 0].max   [returns 5]
 
+min()
+// Will return the smallest value in the list.
+// Example: [1, 3, 8, 5, 1, 5, 0].max   [returns 0]
 
-removeAllItems(Values, item)
-remItems(Values, item)
-remAllItem(Values, item)
-// Expects type(s) 'list' for Values | any for item
-// Will remove all instances of the specified item from the provided list.
-// Will return a list with all instances said item removed.
+maxIndex()
+// Will return the index of the largest value in the list.
+// Example: [1, 3, 8, 5, 1, 5, 0].maxIndex   [returns 2]
 
+minIndex()
+// Will return the index of the largest value in the list.
+// Example: [1, 3, 8, 5, 1, 5, 0].maxIndex   [returns 6]
 
-count(Values, item)
-// Expects type(s) 'list', 'map' for Values | any for item
-// If list is passed, will return how many times the item appears in given list.
-// If map is passed, will return the length of the value associated with the item as the key for map.
+delete(item)
+// Will delete the first instance of the given 'item' from list and will also return said list.
+// Example: [1, 3, 8, 5, 1, 5, 0].delete(3)   [returns [1, 8, 5, 1, 5, 0]]
+// Note: Will modify the given list.
 
+deleteAll(item)
+// Will delete the all instances of the given 'item' from list and will also return said list.
+// Example: [1, 3, 8, 5, 1, 5, 0].delete(1)   [returns [3, 8, 5, 5, 0]]
+// Note: Will modify the given list.
 
-removeDuplicates(Values)
-remDups(Values)
-remDuplicates(Values)
-// Expects type(s) 'list' for Values
-// Will return a list with all duplicate values removed.
+set()
+// Will delete the all duplicates from list and will also return said list.
+// Example: [1, 3, 8, 5, 1, 5, 0].set   [returns [1, 3, 8, 5, 0]]
+// Note: Will modify the given list.
 
+count(item)
+// Will return how many times the given 'item' appears in said list.
+// Example: [1, 3, 8, 5, 1, 5, 0].count(1)   [returns 2]
 
-mean(Values)
-average(Values)
-// Expects type(s) 'list' for Values
-// Will return the mean/average of the provided list (may not behave as expected for lists containing non-numbers).
+mean()
+// Will return the mean (average) of the said list.
+// Example [1, 3, 8, 5, 1, 5, 0].mean   [returns 3.28571...]
 
+median()
+// Will return the median (middle of organized list) of the said list.
+// Example [1, 3, 8, 5, 1, 5, 0].median   [returns 3]
 
-median(Values)
-middle(Values)
-// Expects type(s) 'list' for Values
-// Will return the median/middle of the provided list when sorted (may not behave as expected for lists containing non-numbers).
+mode()
+// Will return the mode (most occuring) item of the said list.
+// Example [1, 3, 8, 5, 1, 5, 0].mode   [returns 1]
 
+applyFunction(func)
+// Will apply the given function 'func' onto all items in the given list.
+// Example [1.32, 124.234, 423.3, 32.24545].applyFunction(@floor)   [returns [1, 124, 423, 32]]
+```
+<br />
 
-mode(Values)
-most(Values)
-// Expects type(s) 'list' for Values
-// Will return the mode/most (most common item) of the provided list.
+New String Functions
+```
+capitalize()
+// Will capitalize the first letter of said string.
+// Exaple "hello!"   [returns "Hello!"]
 
+lfill(amount, filler)
+// Will fill space on the left side of the said string using 'filler' until the length of the string is equal to 'amount'.
+// Example "hello".lfill(10, " ")   [returns "     hello"]
+// Note: 'filler' variable defaults to "0"
 
-factors(number)
-// Expects type(s) 'number', 'string(number)' for number
-// Will return a list of factors of the given number.
+rfill(amount, filler)
+// Will fill space on the right side of the said string using 'filler' until the length of the string is equal to 'amount'.
+// Example "hello".rfill(10, " ")   [returns "hello     "]
+// Note: 'filler' variable defaults to "0"
 
+format(Variables)
+// Will replace instances of "{}" in said string with items given in 'Variables' in the order of the given 'Variables'.
+// Example "Hello {}! Today is {}.".format(["User","Friday"])   [returns "Hello User! Today is Friday."]
+// Note: The amount of "{}" in said string and amount of items in 'Variables' should be equal in length.
+
+group(groupsize)
+// Will split the string into a list comprising of substrings of sizes equal to 'groupsize'.
+// Example "Hello! How are you?".group(3)   [returns ["Hel", "lo!", " Ho", "w a", "re ", "you", "?"]]
+```
+<br />
+
+New General Functions
+```
+factors(value)
+// Will return a list of the factors of the given 'value'.
+// Example: factors(20)   [returns [1, 2, 4, 5, 10, 20]]
+
+factorsPrime(value)
+// Will return a list of the prime factors of the given 'value'.
+// Example: factorsPrime(20)   [returns [2, 2, 5]]
+
+isPrime(value)
+// Will return true if the given 'value' is prime, false if otherwise (1 or 0).
+// Example: isPrime(7)   [returns 0(false)]
 
 greatestCommonFactor(Values)
-GCF(Values)
-// Expects type(s) 'list' for Values
-// Will return the greatest common factor of the Values in given list (may not behave as expected for lists containing non-numbers).
+// Will return the greatest common factor of the given 'Values'
+// Example: greatestCommonFactor([10, 20, 55])   [returns 5]
 
+decimalpercent(value)
+// Will convert the decimal 'value' into percentage form assuming 'value' is a decimal.
+// Example decimalpercent(10)   [returns 1000]
 
-decimalToPercent(number)
-DTP(number)
-// Expects type(s) 'number', 'string(number)' for number
-// Will return the percentage form of given number (assuming decimal).
+percentdecimal(value)
+// Will convert the percentage 'value' into decimal form assuming 'value' is a percentage.
+// Example percentdecimal(10)   [returns 0.1]
 
+percentmultiplier(value)
+// Will convert the percentage 'value' into multiplier form assuming 'value' is a percentage.
+// Example percentmultiplier(10)   [returns 1.1]
 
-percentToDecimal(number)
-PTD(number)
-// Expects type(s) 'number', 'string(number)' for number
-// Will return the decimal form of the given number (assuming percentage).
+multiplierpercent(value)
+// Will convert the multiplier 'value' into percentage form assuming 'value' is a multiplier.
+// Example multiplierpercent(10)   [returns 900]
 
+decimalfraction(value)
+// Will convert the decimal 'value' into fraction form assuming 'value' is a decimal.
+// Example decimalfraction(0.305)   [returns 61/200]
 
-percentToMultiplier(number)
-PTM(number)
-// Expects type(s) 'number', 'string(number)' for number
-// Will return the multiplier form of the given number (assuming percentage).
+baseConvert(value, base)
+// Will convert the 'value' variable assuming base 10 into given 'base' base and will return as list.
+// Example baseConvert(100, 7)   [returns [2, 0, 2]]
 
+hex(value)
+// Will return the 'value' variable assuming base 10 as hexidecimal, will be a string.
+// Example hex(100)   [returns "64"]
 
+bin(value)
+// Will return the 'value' variable assuming base 10 as binary, will be a string.
+// Example bin(100)   [returns "1100100"]
 
-multiplierToPercent(number)
-MTP(number)
-// Expects type(s) 'number', 'string(number)' for number
-// Will return the percentage form of the given number (assuming multiplier).
-
-
-decimalToFraction(number)
-DTF(number)
-// Expects type(s) 'number', 'string(number)' for number
-// Will return the fraction form of the given number (assuming decimal).
-
-
-baseConvert(number, base)
-// Expects type(s) 'number', 'string(number)' for number
-// Expects type(s) 'number', 'string(number)' for base
-// Will return (in list for) the number converted to given base.
-
-
-hex(number)
-// Expects type(s) 'number', 'string(number)' for number
-// Will return the hexidecimal form of the given number.
-
-
-bin(number)
-// Expects type(s) 'number', 'string(number)' for number
-// Will return the binary form of the given number.
-
-oct(number)
-// Expects type(s) 'number', 'string(number)' for number
-// Will return the octal form of the given number.
-
-
-capitalize(string)
-// Expects type(s) 'string' for string
-// Will return given string with first item in the provided string uppercase.
-
-
-applyFunction(func, Values)
-// Expects type(s) 'function' for func | 'list' for Values
-// Will apply the given function to all items in the given Values (note one must pass the function with @ infront (applyFunction(@sqrt, lust)).
-// This edits the provided list, so reassignment is not needed.
-
-
-rfill(string, amount, filler)
-// Expects type(s) 'string' for string | 'number', 'string(number)' for amount | 'string' for filler
-// Will use the filler variable and will pad on the right the string with said filler until the length of said string is equal to the amount variable.
-
-
-lfill(string, amount, filler)
-// Expects type(s) 'string' for string | 'number', 'string(number)' for amount | 'string' for filler
-// Will use the filler variable and will pad on the left the string with said filler until the length of said string is equal to the amount variable.
-
-
-isPrime(number)
-// Expects type(s) 'number', 'string(number)' for number
-// Will return true or false depending on if the number is a prime number or not.
-
-
-factorsPrime(number)
-factorsp(number)
-// Expects type(s) 'number', 'string(number)' for number
-// Will return a list of prime factors of the given number.
-
-
-format(string, Values)
-f(string, Values)
-// Expects type(s) 'string' for string | 'list' for Values
-// Takes a string with '{}' and returns the same string with each instance with a the correspond item in Values, expects equal number of items in Values list and '{}' in the given string.
-
-
-stringGroup(string, groupsize)
-// Expects type(s) 'string' for string | 'number' for groupsize
-// Will return a list of the given string "chopped" up into groups with lengths equal to groupsize (the last item may not be said length if the length of the string is not a multiple of the groupsize).
+oct(value)
+// Will return the 'value' variable assuming base 10 as octal, will be a string.
+// Example oct(100)   [returns "144"]
 ```
 ​
 <br />
