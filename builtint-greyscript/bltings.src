@@ -386,14 +386,14 @@ end function
 
 
 //Folder Count Function
-foldercount = function(file)
+foldercount = function(folder)
     if is_folder(file) then return file.get_folders.len else return null
 end function
 
 
 
 //File Count Function
-filecount = function(file)
+filecount = function(folder)
     if is_folder(file) then return file.get_files.len else return null
 end function
 
