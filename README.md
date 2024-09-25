@@ -124,6 +124,42 @@ group(groupsize)
 ```
 <br />
 
+New Number Functions
+```js
+factors()
+// Will return a list of the factors of the given 'value'.
+// Example: x = 20; x.factors   [returns [1, 2, 4, 5, 10, 20]]
+
+factorsPrime()
+// Will return a list of the prime factors of the given 'value'.
+// Example: x = 20; x.factorsPrime   [returns [2, 2, 5]]
+
+isPrime()
+// Will return true if the given 'value' is prime, false if otherwise (1 or 0).
+// Example: x = 7; x.isPrime   [returns 0(false)]
+
+decimalpercent()
+// Will convert the decimal 'value' into percentage form assuming 'value' is a decimal.
+// Example x = 10; x.decimalpercent   [returns 1000]
+
+percentdecimal()
+// Will convert the percentage 'value' into decimal form assuming 'value' is a percentage.
+// Example x = 10; x.percentdecimal   [returns 0.1]
+
+percentmultiplier()
+// Will convert the percentage 'value' into multiplier form assuming 'value' is a percentage.
+// Example x = 10; x.percentmultiplier   [returns 1.1]
+
+multiplierpercent()
+// Will convert the multiplier 'value' into percentage form assuming 'value' is a multiplier.
+// Example x = 10; x.multiplierpercent   [returns 900]
+
+decimalfraction()
+// Will convert the decimal 'value' into fraction form assuming 'value' is a decimal.
+// Example x = 0.305; x.decimalfraction   [returns 61/200]
+```
+<br />
+
 New General Functions
 ```js
 factors(value)
