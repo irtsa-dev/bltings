@@ -135,7 +135,7 @@ factors = function(value)
         end for
     end for
 
-    return remDups(Factors).sort
+    return Factors.set.sort
 end function
 
 
