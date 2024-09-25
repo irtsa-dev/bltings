@@ -1,0 +1,322 @@
+//Max Function
+list.max = function(self)
+    return self[0:].sort[-1]
+end function
+
+map.max = function(self)
+    Items = self.values
+    return self.indexes[Items.indexOf(Items.max)]
+end function
+
+
+
+//MaxIndex Function
+list.maxIndex = function(self)
+    return self.indexOf(self.max)
+end function
+
+
+
+//Min Function
+list.min = function(self)
+    return self[0:].sort[0]
+end function
+
+map.min = function(self)
+    Items = self.values
+    return self.indexes[Items.indexOf(Items.max)]
+end function
+
+
+
+//MinIndex Function
+list.minIndex = function(self)
+    return self.indexOf(self.min)
+end function
+
+
+
+//Delete Function
+list.delete = function(self, item)
+    if self.indexOf(item) != null then self.remove(self.indexOf(item))
+    return self
+end function
+
+
+
+//DeleteAll Function
+list.deleteAll = function(self, item)
+    if self.indexOf(item) == null then return Values
+
+    while self.indexOf(item) != null
+        self.delete(item)
+    end while
+
+    return self
+end function
+
+
+
+//Set Function
+list.set = function(self)
+    Values = []
+    for i in self
+        if Values.indexOf(i) == null then Values.push(i)
+    end for
+    return Values
+end function
+
+
+
+//Count Function
+list.count = function(self, item)
+    return self.len - self[0:].deleteAll(item).len
+end function
+
+map.count = function(self, item)
+    return str(self[item]).len
+end function
+
+
+
+//Mean Function
+list.mean = function(self)
+    return sum(self) / self.len
+end function
+
+
+
+//Median Function
+list.median = function(self)
+    if self.len % 2 == 0 then
+        x = self.len / 2
+        return sum(self[0:]).sort[x : x + 1] / 2
+    end if
+    return self[0:].sort[floor(round(self.len / 2))]
+end function
+
+
+
+//Mode Function
+list.mode = function(self)
+    Items = self[0:].set
+
+    Counts = []
+    for i in Items
+        Counts.push(Items.count(i))
+    end for
+
+    return Counts[Counts.maxIndex]
+end function
+
+
+
+//ApplyFunction Function
+list.applyFunction = function(self, func)
+    for i in range(self.len - 1)
+		self[i] = func(self[i])
+	end for
+end function
+
+
+
+//Factors Function
+factors = function(value)
+    Temp = []
+    for i in range(1, floor(sqrt(value)) + 1)
+        if value % i == 0 then Temp.push([i, floor(value / i)])
+    end for
+
+    Factors = []
+    for pair in Temp
+        for item in pair
+            Factors.push(item)
+        end for
+    end for
+
+    return remDups(Factors).sort
+end function
+
+
+
+//FactorsPrime Function
+factorsPrime = function(number)
+    Factors = [1]
+    while not isPrime(number)
+        number = floor(number / Factors[-1])
+        for i in factors(number)
+            if isPrime(i) then
+                Factors.push(i)
+                break
+            end if
+        end for
+    end while
+    return Factors[1:]
+end function
+
+
+
+//IsPrime Function
+isPrime = function(number)
+    if number == 1 then return false
+    return factors(number).len == 2
+end function
+
+
+
+//GreatestCommonFactor Function
+greatestCommonFactor = function(Values)
+    Items = Values[0:]
+    for i in range(Items.len - 1)
+        Items[i] = factors(Items[i])
+    end for
+
+    FactorAmounts = []
+    for item in Items
+        FactorAmounts.push(item.len)
+    end for
+
+    smallest = Items[FactorAmounts.minIndex]
+    Items.delete(smallest)
+
+    Data = []
+    for small in smallest
+        Temp = []
+        for item in Items
+            if item.indexOf(small) != null then Temp.push(true)
+        end for
+        if Temp.count(true) == Items.len then Data.push(small)
+    end for
+
+
+    return max(Data)
+end function
+
+
+
+//Decimal to Percent Function
+decimalpercent = function(value)
+    return value * 100
+end function
+
+
+
+//Percent to Decimal Function
+percentdecimal = function(value)
+    return value / 100
+end function
+
+
+
+//Percent to Multiplier Function
+percentmultiplier = function(value)
+    return percentdecimal(value) + 1
+end function
+
+
+
+//Multiplier to Percent Function
+multiplierpercent = function(value)
+    return decimalpercent(value - 1)
+end function
+
+
+
+//Decimal to Fraction Function
+decimalfraction = function(value)
+    value = str(value).split("\.")
+    if value.len == 0 then return value[0]
+
+    denominator = 10 ^ value[1].len
+    numerator = value[1].to_int + (value[0].to_int * denominator)
+
+    factor = greatestCommonFactor([numerator, denominator])
+    numerator = floor(numerator / factor)
+    denominator = floor(denominator / factor)
+
+    return numerator + "/" + denominator
+end function
+
+
+
+//BaseConvert Function
+baseConvert = function(value, base)
+    digits = []
+    while value > 0
+        digits.push(floor(value % base))
+        value = floor(value / base)
+    end while
+
+    digits.reverse
+    return digits
+end function
+
+
+
+//Hex Function
+hex = function(value)
+    dectohex = function(n)
+        if n < 10 then return n else return char(n + 87)
+    end function
+
+    return baseConvert(value, 16).applyFunction(@dectohex).join("")
+end function
+
+
+
+//Binary function
+bin = function(value)
+    return baseConvert(value, 2).join("")
+end function
+
+
+
+//Binary function
+oct = function(value)
+    return baseConvert(value, 8).join("")
+end function
+
+
+
+//Capitalize Function
+string.capitalize = function(self)
+    return self[0].upper + self[1:]
+end function
+
+
+
+//RFill Function
+string.rfill = function(self, amount, filler = "0")
+    return self + filler * [0, amount - self.len].max
+end function
+
+
+
+//LFill Function
+string.lfill = function(self, amount, filler = "0")
+    return filler * [0, amount - self.len].max + self
+end function
+
+
+
+//Format Function
+string.format = function(self, Variables)
+    x = 0
+    while not self.indexOf("{}") == null
+        i = self.indexOf("{}")
+        self = self[0:i] + Variables[x] + self[i + 2:]
+        x = x + 1
+    end while
+    return self
+end function
+
+
+
+//Group Function
+string.group = function(self, groupsize)
+    strings = []
+    for i in range(0, str(self).len, groupsize)
+        strings.push(str(self)[i : [i + groupsize, str(self).len].min])
+    end for
+    return strings
+end function
