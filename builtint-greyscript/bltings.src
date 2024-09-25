@@ -114,8 +114,9 @@ end function
 //ApplyFunction Function
 list.applyFunction = function(self, func)
     for i in range(self.len - 1)
-		self[i] = func(self[i])
-	end for
+        self[i] = func(self[i])
+    end for
+    return self
 end function
 
 
