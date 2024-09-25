@@ -172,7 +172,7 @@ isPrime = function(number)
 end function
 
 number.isPrime = function
-    return isPrime(function)
+    return isPrime(self)
 end function
 
 
