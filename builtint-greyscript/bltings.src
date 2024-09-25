@@ -186,7 +186,9 @@ greatestCommonFactor = function(Values)
         for item in Items
             if item.indexOf(small) != null then Temp.push(true)
         end for
-        if Temp.count(true) == Items.len then Data.push(small)
+        if Temp.len > 0 then
+            if Temp.count(true) == Items.len then Data.push(small)
+        end if
     end for
 
 
