@@ -23,7 +23,8 @@ Adds more functions into <a href="https://codedocs.ghtools.xyz">greyscript</a> f
 <p align="center"><a href="https://github.com/irtsa-dev/builtin-greyscript/wiki/New-Number-Functions">New Number Functions</a></p>
 <p align="center"><a href="https://github.com/irtsa-dev/builtin-greyscript/wiki/New-String-Functions">New String Functions</a></p>
 <br />
-<hr></hr>
+<br />
+<br />
 <br />
 <br />
 <h2 align="center">Additional Notes</h2>
