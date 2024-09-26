@@ -12,7 +12,7 @@
 </p>
 <p align="center">
 <br />
-Adds more functions into <a href="https://codedocs.ghtools.xyz">greyscript</a> from <a href="https://store.steampowered.com/app/605230/Grey_Hack">Grey Hack</a> to utilize in scripts.
+Adds more functions into <a href="https://codedocs.ghtools.xyz">greyscript</a> from <a href="https://store.steampowered.com/app/605230/Grey_Hack">Grey Hack</a> to utilize in scripts by either extending existing object/classes or adding as standalone functions similar to "builtin" functions.
 </p>
 <br />
 <br />
