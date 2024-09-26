@@ -26,7 +26,9 @@ Adds more functions into <a href="https://codedocs.ghtools.xyz">greyscript</a> f
 <br />
 <br />
 <h2 align="center">Installation</h2>
+<p align="center">
 To install, once first copy the code of <b>bltings.src</b> file found <a href="https://github.com/irtsa-dev/builtin-greyscript/blob/main/builtint-greyscript/bltings.src">here</a> and paste it into an open <b>CodeEditor</b> process in-game. Afterwards, you must save this to <code>/bin</code> as <code>bltings</code> <i>(or optionally any path and name you will later remember)</i> making sure to enable <b>Allow import</b>. Once you have done this, you may now utilize <code>import_code("/bin/blitings")</code> or if you hadn't saved it as recommended then <code>import_code("(path-to-file)")</code> at the top of any file that you wish to use the functions in.
+</p>
 <br />
 <br />
 <br />
