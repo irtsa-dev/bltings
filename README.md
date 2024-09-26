@@ -1,8 +1,25 @@
-# builtin-greyscript (bltings)
-Adds more functions into [greyscript](https://codedocs.ghtools.xyz/) from [Grey Hack](https://store.steampowered.com/app/605230/Grey_Hack/) to utilize in scripts.
+<h1 align="center"><b>builtin-greyscript (bltings)</b></h1>
+<p align="center">
+<a href="https://github.com/irtsa-dev/builtin-greyscript/releases/tag/v2.2.0">
+        <img src="https://img.shields.io/badge/release-2.2.0-brightgreen"
+            alt="release"></a>
+<a href="https://github.com/irtsa-dev/builtin-greyscript/issues">
+        <img src="https://custom-icon-badges.demolab.com/github/issues-raw/irtsa-dev/builtin-greyscript?logo=issue"
+            alt="issues"></a>
+<a href="https://github.com/irtsa-dev/builtin-greyscript/pulls">
+        <img src="https://custom-icon-badges.demolab.com/github/issues-pr/irtsa-dev/builtin-greyscript?logo=git-pull-request"
+            alt="pulls"></a>
+</p>
+<p align="center">
 <br />
 <br />
-​<br />
+Adds more functions into <a href="https://codedocs.ghtools.xyz">greyscript</a> from <a href="https://store.steampowered.com/app/605230/Grey_Hack">Grey Hack</a> to utilize in scripts.
+</p>
+<br />
+<br />
+<br />
+<br />
+
 ## Installation
 1. Copy the code from the **bltings.src** file found [here](https://github.com/irtsa-dev/builtin-greyscript/tree/main/builtint-greyscript).
 2. Open **CodeEditor.exe** in the game **Grey Hack** and paste the contents of the `bltings.src` file you copied.
