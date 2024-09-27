@@ -1,4 +1,7 @@
-<h1 align="center"><b>builtin-greyscript (bltings)</b></h1>
+<p align="center">
+    <img src="https://repository-images.githubusercontent.com/861027254/48080349-97e4-4a74-95c0-2576869830c7"
+        height="280">
+</p>
 <p align="center">
 <a href="https://github.com/irtsa-dev/builtin-greyscript/releases/tag/v2.2.0">
         <img src="https://img.shields.io/badge/release-2.2.0-brightgreen"
