@@ -46,7 +46,7 @@ end function
 
 //DeleteAll Function
 list.deleteAll = function(item)
-    if self.indexOf(item) == null then return Values
+    if self.indexOf(item) == null then return self
 
     while self.indexOf(item) != null
         self.delete(item)
