@@ -274,8 +274,8 @@ end function
 
 
 
-//BaseConvert Function
-baseConvert = function(value, base)
+//Decimal to Base Function
+decimalToBase = function(value, base)
     digits = []
     while value > 0
         digits.push(floor(value % base))
@@ -294,21 +294,21 @@ hex = function(value)
         if n < 10 then return n else return char(n + 87)
     end function
 
-    return baseConvert(value, 16).applyFunction(@dectohex).join("")
+    return decimalToBase(value, 16).applyFunction(@dectohex).join("")
 end function
 
 
 
 //Binary function
 bin = function(value)
-    return baseConvert(value, 2).join("")
+    return decimalToBase(value, 2).join("")
 end function
 
 
 
 //Binary function
 oct = function(value)
-    return baseConvert(value, 8).join("")
+    return decimalToBase(value, 8).join("")
 end function
 
 
@@ -440,4 +440,28 @@ folderhash = function(folder)
     end for
 
     return md5(content)
+end function
+
+
+
+//String to List Function
+string.list = function
+    stringlist = []
+    for i in self
+        stringlist.push(i)
+    end for
+    return stringlist
+end function
+
+
+
+//Base  to Decimal Function
+baseToDecimal = function(value, base)
+    valuestring = value.list
+    valuestring.reverse
+
+    for i in range(0, valuestring.len - 1)
+        valuestring[i] = valuestring[i].to_int * (base ^ i)
+    end for
+    return sum(valuestring)
 end function
