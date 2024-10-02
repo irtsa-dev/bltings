@@ -459,9 +459,13 @@ end function
 baseToDecimal = function(value, base)
     valuestring = value.list
     valuestring.reverse
+    for i in range(valuestring.len - 1)
+        valuestring[i] = to_int(valuestring[i])
+        if typeof(valuestring[i]) == "string" then valuestring[i] = valuestring[i].code - 87
+    end for
 
     for i in range(0, valuestring.len - 1)
-        valuestring[i] = valuestring[i].to_int * (base ^ i)
+        valuestring[i] = valuestring[i] * (base ^ i)
     end for
     return sum(valuestring)
 end function
