@@ -469,3 +469,10 @@ baseToDecimal = function(value, base)
     end for
     return sum(valuestring)
 end function
+
+
+
+//Has Item Function
+list.hasItem = function(item)
+    return self.indexOf(item) != null
+end function
