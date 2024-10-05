@@ -476,3 +476,43 @@ end function
 list.hasItem = function(item)
     return self.indexOf(item) != null
 end function
+
+
+
+//Log Function
+log = function(number, base)
+    originalnumber = number
+    result = 0
+    n = 0
+    
+    while base ^ result < originalnumber
+        while number > base
+            number = number / base
+            result = result + (1 / [1, n * 10].max)
+        end while
+        number = number * 10
+        n = n + 1
+    end while
+    return round(result, 5)
+end function
+
+
+
+//Natural Log Function
+nlog = function(number)
+    return log(number, e)
+end function
+
+
+
+//Log 10 Function
+log10 = function(number)
+    return log(number, 10)
+end function
+
+
+
+//Natural Number
+e = function
+    return 2.718281828459045
+end function
