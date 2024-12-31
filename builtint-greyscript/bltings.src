@@ -490,7 +490,24 @@ end function
 log10 = function(number)
     return log(number, 10)
 end function
+
+
+
 //Natural Number
 e = function
     return 2.718281828459045
+end function
+
+
+
+rndint = function(min, max)
+    return floor(rnd * (max - min + 1) + min)
+end function
+
+
+
+rnduni = function(min, max, decimals = 6)
+    max = max * 10 ^ decimals
+    min = min * 10 ^ decimals
+    return floor(rnd * (max - min + 1) + min) / 10 ^ decimals
 end function
