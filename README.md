@@ -4,7 +4,7 @@
 </p>
 <p align="center">
 <a href="https://github.com/irtsa-dev/builtin-greyscript/releases/tag/v2.5.0">
-        <img src="https://img.shields.io/badge/release-2.4.1-brightgreen"
+        <img src="https://img.shields.io/badge/release-2.5.0-brightgreen"
             alt="release"></a>
 <a href="https://github.com/irtsa-dev/builtin-greyscript/issues">
         <img src="https://custom-icon-badges.demolab.com/github/issues-raw/irtsa-dev/builtin-greyscript?logo=issue"
