@@ -500,12 +500,14 @@ end function
 
 
 
+//Random Integer
 rndint = function(min, max)
     return floor(rnd * (max - min + 1) + min)
 end function
 
 
 
+//Random Uniform
 rnduni = function(min, max, decimals = 6)
     max = max * 10 ^ decimals
     min = min * 10 ^ decimals
