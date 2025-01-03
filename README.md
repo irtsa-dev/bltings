@@ -3,7 +3,7 @@
         height="280">
 </p>
 <p align="center">
-<a href="https://github.com/irtsa-dev/builtin-greyscript/releases/tag/v2.4.1">
+<a href="https://github.com/irtsa-dev/builtin-greyscript/releases/tag/v2.5.0">
         <img src="https://img.shields.io/badge/release-2.4.1-brightgreen"
             alt="release"></a>
 <a href="https://github.com/irtsa-dev/builtin-greyscript/issues">
